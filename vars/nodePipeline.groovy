@@ -193,8 +193,8 @@ def call(Map config = [:]){
 
                                                 #
                                                 sudo rm -rf ${BACKUP_DIR}
-                                                mv ${APP_DIR} ${BACKUP_DIR}
-                                                mv ${TEMP_DIR} ${APP_DIR}
+                                                sudo mv ${APP_DIR} ${BACKUP_DIR}
+                                                sudo mv ${TEMP_DIR} ${APP_DIR}
 
                                                 # clean
                                                 rm -f /tmp/${APP_NAME}.tar
