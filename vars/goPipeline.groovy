@@ -204,13 +204,13 @@ def call(Map config = [:]){
                                                 chmod +x ${TEMP_DIR}/${BINARY_NAME}
 
                                                 if [ -f "${APP_DIR}/config.yaml" ]; then
-                                                    cp ${APP_DIR}/config.yaml ${TEMP_DIR}/${APP_NAME}.config.yaml
+                                                    cp ${APP_DIR}/config.yaml ${TEMP_DIR}/config.yaml
                                                 fi
 
                                                 #
                                                 sudo rm -rf ${BACKUP_DIR}
-                                                mv ${APP_DIR} ${BACKUP_DIR}
-                                                mv ${TEMP_DIR} ${APP_DIR}
+                                                sudo mv ${APP_DIR} ${BACKUP_DIR}
+                                                sudo mv ${TEMP_DIR} ${APP_DIR}
 
                                                 #
                                                 docker restart ${CONTAINER_NAME}
