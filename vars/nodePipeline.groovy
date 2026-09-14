@@ -6,7 +6,11 @@ def call(Map config = [:]){
         error("Parameter 'name' is required")
     }
 
-    def rootDir = config.rootDir ?: "/home/app"
+    if(!config.rootDir){
+        error("Parameter 'rootDir' is required")
+    }
+
+    def rootDir = config.rootDir
     def container = config.container ?: config.name
 
     pipeline{
@@ -15,7 +19,7 @@ def call(Map config = [:]){
 
         environment{
             APP_NAME = "${config.name}"
-            APP_DIR = "${rootDir}/${config.name}"
+            APP_DIR = "${rootDir}"
             CONTAINER_NAME = "${container}"
             BACKUP_DIR = "/home/backup/${config.name}"
             TEMP_DIR = "/tmp/deploy_${config.name}"
