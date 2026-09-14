@@ -6,9 +6,13 @@ def call(Map config = [:]){
         error("Parameter 'name' is required")
     }
 
+    if(!config.rootDir){
+        error("Parameter 'rootDir' is required")
+    }
+
     def mainPath = config.main ?: '.'
     def binaryName = config.binaryName ?: config.name
-    def rootDir = config.rootDir ?: "/home/app"
+    def rootDir = config.rootDir
     def container = config.container ?: config.name
     def goPrivate = config.goPrivate ?: 'github.com/leisuresaas/*,github.com/leisurecoder/*'
     def gitCredentialsId = config.gitCredentialsId ?: 'Github-PAT-Leisurecoder'
@@ -21,7 +25,7 @@ def call(Map config = [:]){
             APP_NAME = "${config.name}"
             BINARY_NAME = "${binaryName}"
             MAIN_PATH = "${mainPath}"
-            APP_DIR = "${rootDir}/${config.name}"
+            APP_DIR = "${rootDir}"
             CONTAINER_NAME = "${container}"
             BACKUP_DIR = "/home/backup/${config.name}"
             TEMP_DIR = "/tmp/deploy_${config.name}"
