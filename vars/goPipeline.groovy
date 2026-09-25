@@ -14,7 +14,7 @@ def call(Map config = [:]){
     def binaryName = config.binaryName ?: config.name
     def rootDir = config.rootDir
     def container = config.container ?: config.name
-    def goPrivate = config.goPrivate ?: 'github.com/leisuresaas/*,github.com/leisurecoder/*'
+    def goPrivate = config.goPrivate ?: 'github.com/leisuresaas/*,github.com/scaledacademy/*'
     def gitCredentialsId = config.gitCredentialsId ?: 'Github-PAT-Leisurecoder'
 
     pipeline{
