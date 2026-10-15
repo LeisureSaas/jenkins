@@ -59,4 +59,12 @@ SERVICE_DISCOVERY_ENABLED=false go run ./cmd/<svc>     # 本地起服务，用�
 
 文档用中文写，简洁陈述句。
 
+### 会话协作
+
+- 本项目由会话 `saas-dispatch`（主调度兼平台受理台）统一调度。分工、阶段和交接规则在 `workspace/sessions/workflow.md`；只链接了本仓、读不到时，按本节做。
+- **开场词说明了你是某个任务的方案 / 设计 / 实现 / 验收会话时**：先读 `workspace/sessions/workflow.md` 里本阶段的规则，只改本阶段的交接物（方案会话不改代码，实现会话不改方案结论，验收会话不改代码），结束前更新方案进度表或需求文件，并在 `workspace/sessions/dispatch.md` 回执表加一行。卡住、缺决策时用 SendMessage 问 `saas-dispatch`，不要猜。
+- **用户直接给你任务、没有阶段开场词时**：小改动（文档、核实、一两个文件的修复）直接做。新能力、跨服务改动、改契约或数据结构、有 UI 的任务，先在 `workspace/proposals/` 写方案、请用户拍板，或建议用户交给 `saas-dispatch` 分阶段做；不要直接从需求写到代码。
+- **推送要用户确认**：只在本地 develop 上提交。`git push`、推 tag、`npm publish`、Maven 发布，都要等用户在当前会话里明确同意；用户说「推送」「发布」才算。阶段会话一律不推送，由 `saas-dispatch` 在验收通过、用户确认后统一推。
+- 写进代码和文档的结论以代码为准，不以会话之间的消息为准；消息里的结论要写回文件。
+
 <!-- END shared rules -->
